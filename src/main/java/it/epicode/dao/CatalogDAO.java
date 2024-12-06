@@ -43,8 +43,9 @@ public class CatalogDAO {
     }
     public Catalog findByAuthor(String author) {
         try {
+            // Correzione del nome dell'entità
             TypedQuery<Catalog> query = em.createQuery(
-                    "SELECT c FROM CatalogClass c WHERE c.author = :author", Catalog.class);
+                    "SELECT c FROM Catalog c WHERE c.author = :author", Catalog.class);
             query.setParameter("author", author);
             return query.getSingleResult();
         } catch (NoResultException e) {
@@ -55,6 +56,7 @@ public class CatalogDAO {
             throw new RuntimeException("Errore durante il recupero dell'entità con autore: " + author, e);
         }
     }
+
     public Catalog findByPublicationYear(int publicationYear) {
         try {
             TypedQuery<Catalog> query = em.createQuery(
