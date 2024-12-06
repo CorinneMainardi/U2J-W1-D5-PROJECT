@@ -317,29 +317,7 @@ public class Application {
                 System.out.println("  Nome: " + user.getName());
                 System.out.println("  Cognome: " + user.getSurname());
                 System.out.println("  Data di nascita: " + user.getBirthDate());
-                System.out.println("  Prestiti associati:");
 
-                // Stampa i prestiti dell'utente
-                List<Loan> loanList = user.getLoanList();
-                if (loanList != null && !loanList.isEmpty()) {
-                    for (Loan loan : loanList) {
-                        System.out.println("    - Prestito ID: " + loan.getId());
-                        System.out.println("      Titolo del catalogo: " + loan.getGeneralLoan().getTitle());
-                        System.out.println("      Data inizio prestito: " + loan.getStartLoan());
-                        System.out.println("      Data prevista restituzione: " + loan.getExpectedReturn());
-
-                        // Stampa la data di restituzione effettiva solo se il prestito è stato restituito
-                        if (loan.getActualReturnDate() != null) {
-                            System.out.println("      Data restituzione effettiva: " + loan.getActualReturnDate());
-                        } else {
-                            System.out.println("      Prestito non restituito ancora.");
-                        }
-
-                        System.out.println("--------------------------------------------------");
-                    }
-                } else {
-                    System.out.println("  Nessun prestito trovato per questo utente.");
-                }
             } else {
                 System.out.println("Nessun utente trovato con il numero di tessera: " + userCard);
             }
