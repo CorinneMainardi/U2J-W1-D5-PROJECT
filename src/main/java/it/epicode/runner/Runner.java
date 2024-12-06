@@ -8,9 +8,7 @@ import it.epicode.enums.Periodicita;
 import jakarta.persistence.EntityManager;
 
 import java.util.List;
-
 import com.github.javafaker.Faker;
-
 import java.time.LocalDate;
 import java.time.ZoneId;
 
@@ -73,13 +71,17 @@ public class Runner {
 
                 loan.setStartLoan(loanStart);
 
+                // Imposta la data di restituzione prevista
                 if (i == 0) {
                     // Prestito restituito in tempo
                     loan.setExpectedReturn(loanStart.plusDays(30));
+                    loan.setActualReturnDate(loan.getExpectedReturn()); // Restituito in tempo
                 } else {
                     // Prestito scaduto e non restituito
                     loan.setExpectedReturn(loanStart.minusDays(15));
+                    loan.setActualReturnDate(null); // Non restituito
                 }
+
                 loanDAO.save(loan);
             }
         }

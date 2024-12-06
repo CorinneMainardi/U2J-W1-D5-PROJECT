@@ -73,19 +73,21 @@ public class CatalogDAO {
     //creo una lista di catalogo cosicché possa restituirmi tutti i risultati contenenti quanto indicato nella ricerca
     public List<Catalog> findByTitle(String title) {
         try {
+            // Modifica della query per usare LIKE per la ricerca parziale
             TypedQuery<Catalog> query = em.createQuery(
-                    "SELECT c FROM Catalog c WHERE c.title = :title", Catalog.class);
-            query.setParameter("title", "%" + title + "%"); //faccio una ricerca anchep er titolo parziale
+                    "SELECT c FROM Catalog c WHERE c.title LIKE :title", Catalog.class);
+            query.setParameter("title", "%" + title + "%"); // Utilizzo del simbolo "%" per ricerca parziale
+
             return query.getResultList();
         } catch (NoResultException e) {
             System.out.println("Nessun elemento trovato per titolo: " + title);
-            return new ArrayList<>(); //lista vuota se non trov a nulla
-
+            return new ArrayList<>(); // Restituisce una lista vuota se non ci sono risultati
         } catch (Exception e) {
             e.printStackTrace();
             throw new RuntimeException("Errore durante il recupero dell'entità con titolo: " + title, e);
         }
     }
+
 
     public void update (Catalog catalog){
         em.getTransaction().begin();

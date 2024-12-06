@@ -187,9 +187,10 @@ public class Application {
 
     //ricerca per titolo
     public static void searchByTitle(Scanner scanner, CatalogDAO catalogDAO) {
-        System.out.print("Inserisci il titolo da ricercare o parte di esso:");
+        System.out.print("Inserisci il titolo da ricercare o parte di esso: ");
         String ricercaTitolo = scanner.nextLine();
         List<Catalog> catalogByTitleList = catalogDAO.findByTitle(ricercaTitolo);
+
         if (!catalogByTitleList.isEmpty()) {
             System.out.println("Risultati trovati per il titolo '" + ricercaTitolo + "':");
             for (Catalog catalog : catalogByTitleList) {
@@ -199,6 +200,7 @@ public class Application {
             System.out.println("La ricerca non ha prodotto risultati per il titolo: " + ricercaTitolo);
         }
     }
+
 
 
     //delete
