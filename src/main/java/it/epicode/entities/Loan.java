@@ -21,6 +21,7 @@ public class Loan {
     private Catalog generalLoan;
     private LocalDate startLoan;
     private LocalDate expectedReturn;
+    private LocalDate  actualReturnDate;
 
 
 }
