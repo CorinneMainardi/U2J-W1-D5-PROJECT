@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="31caf764-2dcc-4fe6-90cd-ec243542aa2b" name="Changes" comment="aggiustamenti sul codice">
+    <list default="true" id="31caf764-2dcc-4fe6-90cd-ec243542aa2b" name="Changes" comment="refactoring">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/epicode/dao/LoanDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/epicode/dao/LoanDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/epicode/runner/Runner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/epicode/runner/Runner.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -87,13 +89,38 @@
       <option name="project" value="LOCAL" />
       <updated>1733503530741</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="aggiustamenti sul codice">
+      <option name="closed" value="true" />
+      <created>1733504282771</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1733504282771</updated>
+    </task>
+    <task id="LOCAL-00005" summary="refactoring">
+      <option name="closed" value="true" />
+      <created>1733505230262</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1733505230262</updated>
+    </task>
+    <task id="LOCAL-00006" summary="refactoring">
+      <option name="closed" value="true" />
+      <created>1733505527913</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1733505527913</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="add  actualReturnDate" />
     <MESSAGE value="aggiunta del diagramma" />
     <MESSAGE value="aggiustamenti sul codice" />
-    <option name="LAST_COMMIT_MESSAGE" value="aggiustamenti sul codice" />
+    <MESSAGE value="refactoring" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactoring" />
   </component>
 </project>

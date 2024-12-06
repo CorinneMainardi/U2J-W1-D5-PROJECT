@@ -54,6 +54,7 @@ public class Runner {
         }
 
         // Recupera utenti e catalogo per creare prestiti
+        // Recupera utenti e catalogo per creare prestiti
         List<User> users = em.createQuery("SELECT u FROM User u", User.class).getResultList();
         List<Catalog> catalogs = em.createQuery("SELECT c FROM Catalog c", Catalog.class).getResultList();
 
@@ -61,30 +62,33 @@ public class Runner {
             // Creazione prestiti
             for (int i = 0; i < 2; i++) {
                 Loan loan = new Loan();
-                loan.setUser(users.get(faker.random().nextInt(users.size())));
-                loan.setGeneralLoan(catalogs.get(faker.random().nextInt(catalogs.size())));
+                loan.setUser(users.get(faker.random().nextInt(users.size()))); // Assegna un utente casuale
+                loan.setGeneralLoan(catalogs.get(faker.random().nextInt(catalogs.size()))); // Assegna un catalogo casuale
 
+                // Data di inizio del prestito: 60 giorni fa
                 LocalDate loanStart = faker.date().past(60, java.util.concurrent.TimeUnit.DAYS)
                         .toInstant()
                         .atZone(ZoneId.systemDefault())
                         .toLocalDate();
-
                 loan.setStartLoan(loanStart);
 
-                // Imposta la data di restituzione prevista
+                // La data di restituzione prevista è sempre a 30 giorni dalla data di inizio
+                loan.setExpectedReturn(loanStart.plusDays(30));
+
+                // Imposta la restituzione effettiva in base a i
                 if (i == 0) {
                     // Prestito restituito in tempo
-                    loan.setExpectedReturn(loanStart.plusDays(30));
                     loan.setActualReturnDate(loan.getExpectedReturn()); // Restituito in tempo
                 } else {
                     // Prestito scaduto e non restituito
-                    loan.setExpectedReturn(loanStart.minusDays(15));
                     loan.setActualReturnDate(null); // Non restituito
                 }
 
+                // Salva il prestito nel database
                 loanDAO.save(loan);
             }
         }
+
 
         System.out.println("Popolamento completato!");
     }
