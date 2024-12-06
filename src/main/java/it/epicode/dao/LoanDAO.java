@@ -43,7 +43,7 @@ public class LoanDAO {
     public List<Loan> findExpiredLoans(LocalDate referenceDate) {
         try {
             TypedQuery<Loan> query = em.createQuery(
-                    "SELECT l FROM Loan l WHERE l.expectedReturn < :referenceDate AND l.generalLending IS NOT NULL", Loan.class
+                    "SELECT l FROM Loan l WHERE l.expectedReturn < :referenceDate AND l.actualReturnDate IS NULL", Loan.class
             );
             query.setParameter("referenceDate", referenceDate);
 
@@ -53,5 +53,7 @@ public class LoanDAO {
             throw new RuntimeException("Errore durante il recupero dei prestiti scaduti", e);
         }
     }
+
+
 
 }

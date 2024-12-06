@@ -69,7 +69,6 @@ public class Application {
             }
 
 
-
         }
     }
 
@@ -240,6 +239,14 @@ public class Application {
                     System.out.println("- Titolo prestato: " + loan.getGeneralLoan().getTitle());
                     System.out.println("  Data prestito: " + loan.getStartLoan());
                     System.out.println("  Data prevista restituzione: " + loan.getExpectedReturn());
+                    // Gestisci se la data effettiva di restituzione è nulla
+                    if (loan.getActualReturnDate() != null) {
+                        System.out.println("  Data restituzione effettiva: " + loan.getActualReturnDate());
+                    } else {
+                        System.out.println("  Data restituzione effettiva: Non restituito ancora.");
+                    }
+
+
                 }
             } else {
                 System.out.println("La ricerca non ha prodotto risultati per la tessera nr: " + cardNr);
@@ -251,6 +258,7 @@ public class Application {
     }
 
     //ricerca prestiti scaduti e non restituiti
+    // Ricerca prestiti scaduti e non restituiti
     public static void showExpiredLoans(Scanner scanner, LoanDAO loanDAO) {
         System.out.println("Ricerca dei prestiti scaduti e non restituiti. Inserisci la data di ricerca nel formato YYYY-MM-DD: ");
         String todayStr = scanner.nextLine();
@@ -270,11 +278,20 @@ public class Application {
                     System.out.println("  Titolo del catalogo prestato: " + loan.getGeneralLoan().getTitle());
                     System.out.println("  Data prestito: " + loan.getStartLoan());
                     System.out.println("  Data prevista restituzione: " + loan.getExpectedReturn());
+
+                    // Gestisci se la data effettiva di restituzione è nulla
+                    if (loan.getActualReturnDate() != null) {
+                        System.out.println("  Data restituzione effettiva: " + loan.getActualReturnDate());
+                    } else {
+                        System.out.println("  Data restituzione effettiva: Non restituito ancora.");
+                    }
+
                     System.out.println("--------------------------------------------------");
                 }
             } else {
                 System.out.println("Non sono stati trovati prestiti scaduti e non restituiti.");
             }
+
         } catch (Exception e) {
             System.out.println("Errore: Inserisci una data valida nel formato YYYY-MM-DD.");
             e.printStackTrace();
@@ -289,7 +306,6 @@ public class Application {
         try {
             int userCard = Integer.parseInt(userCardStr);
             System.out.println("Numero di tessera inserito: " + userCard);
-
 
             User user = userDAO.findUserByCard(userCard);
 
@@ -309,6 +325,15 @@ public class Application {
                         System.out.println("      Titolo del catalogo: " + loan.getGeneralLoan().getTitle());
                         System.out.println("      Data inizio prestito: " + loan.getStartLoan());
                         System.out.println("      Data prevista restituzione: " + loan.getExpectedReturn());
+
+                        // Stampa la data di restituzione effettiva solo se il prestito è stato restituito
+                        if (loan.getActualReturnDate() != null) {
+                            System.out.println("      Data restituzione effettiva: " + loan.getActualReturnDate());
+                        } else {
+                            System.out.println("      Prestito non restituito ancora.");
+                        }
+
+                        System.out.println("--------------------------------------------------");
                     }
                 } else {
                     System.out.println("  Nessun prestito trovato per questo utente.");
@@ -322,5 +347,4 @@ public class Application {
         }
     }
 }
-
 
